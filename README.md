@@ -1,6 +1,6 @@
-# Memory-game
+# Memory game
 
-You should find a pair of chinese symbols.
+You should find all pairs of symbols to win.
 
 -Programm counts how many times player clicks the circles.
 
