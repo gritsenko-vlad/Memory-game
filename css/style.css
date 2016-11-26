@@ -1,15 +1,29 @@
 html {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center; 
+}
+/* #container {
+	position: relative;
+	background-color: red;
+	height:550px;
+	margin-top: 150px;
+} */
+#top {
+	position: absolute;
+	left:250px;
+	top:25px;
+	width: 400px;
+	height: 20px;
 }
 
 #board {
 	width: 500px;
 	height: 500px;
-	margin-top: 150px;
 	background-color: #dadae3;
 	border-radius: 30px;
+	margin-top: 50px;
 }
 
 .block {
@@ -26,4 +40,14 @@ html {
 	font-size: 50px;
 	cursor: pointer;
 }
+
+.restart {
+	width: 20px;
+	height: 20px;
+	float: right;
+	background-image: url(http://findicons.com/files/icons/2711/free_icons_for_windows8_metro/128/restart.png);
+	background-size: 20px 20px;
+	cursor: pointer;
+}
+
 
