@@ -1,10 +1,12 @@
 (function() {
 
 var board = document.getElementById('board');
+var top = document.getElementById('top');
 var blocks = document.getElementsByClassName('block')
-var span = document.querySelector('.moves');
+var moves = document.querySelector('.moves');
 var restartBtn = document.querySelector('.restart');
 var numOfTiles = 12;
+var letters = ['力', '力', '刀', '刀', '巾', '巾', '夊', '夊', '心', '心', '弓', '弓'];
 
 
 function createField() {
@@ -15,9 +17,8 @@ function createField() {
 		board.appendChild(tile)
 	}
 }
-createField();
 
-var letters = ['力', '力', '刀', '刀', '巾', '巾', '夊', '夊', '心', '心', '弓', '弓'];
+
 //Randomize array of letters and assign them on tiles
 function randomizeTiles() {
 
@@ -26,23 +27,21 @@ function randomizeTiles() {
 	});
 
 	for (var i = 0; i < numOfTiles; i++) {
-		blocks[i].innerHTML = letters[i];	
-		blocks[i].style.color = 'black';
-		blocks[i].style.backgroundColor = 'black';
+		blocks[i].innerHTML = letters[i];
+		blocks[i].classList.add('back');
 	}
 }
-randomizeTiles();
+
 
 function clear() {
-	setTimeout(function(){
-		first.style.color = 'black';
-		second.style.color = 'black';
-		first.style.backgroundColor = 'black';
-		second.style.backgroundColor = 'black';
-		flipCount = 0;
-	},500)
+		if(first.id !== second.id){
+			setTimeout(function(){
+			first.classList.add('back');
+			second.classList.add('back');
+			flipCount = 0;
+		},500)
+	}
 }
-
 
 function matchedTiles() {
 	setTimeout(function(){
@@ -52,31 +51,43 @@ function matchedTiles() {
 	},500)
 }
 
-var flipCount = 0;
-var countMoves = 0;
-var memoryFlipped = 0;;
+function toggleColor() {
+	if(first.classList.contains('back')) {
+		first.classList.remove('back');
+		first.classList.add('front');
+	}
+	else if(second.classList.contains('back')) {
+		second.classList.remove('back');
+		second.classList.add('front');
+	}
+}
+
+var flipCount = 0,
+ 	//countMoves = 0,
+ 	memoryFlipped = 0;
 var memoryTiles = [];
+
+createField();
+randomizeTiles();
 
 board.onclick = function (event) {
 	var target = event.target;
 
-	if(target.className !== 'block') {return;}
+	if(target == board) {return;}
 
 	flipCount += 1;
-	countMoves += 1;
-	
+	//countMoves += 1;
+
 	if(flipCount == 1) {
 		first = target;
-		first.style.color = 'white';
-		first.style.backgroundColor = '#bd80f4';
-		memoryTiles[0]  = target.innerHTML;
-		console.log(first);
+		toggleColor();
+		memoryTiles[0]  = first.innerHTML;
+		console.log(flipCount);
 	}
 
 	else if(flipCount == 2) {
 		second = target;
-		second.style.color = 'white';
-		second.style.backgroundColor = '#bd80f4';
+		toggleColor();
 		memoryTiles[1]  = target.innerHTML;
 
 		if(first.id == second.id) {
@@ -93,14 +104,16 @@ board.onclick = function (event) {
 
 			clear();
 		}
+		console.log(flipCount);
 
 	}
-	span.innerHTML = countMoves;
+	/*moves.innerHTML = countMoves;
 	restartBtn.onclick = function() {
-		randomizeTiles();
 		countMoves = 0;
-		span.innerHTML = 0;
-	}
+		moves.innerHTML = 0;
+		randomizeTiles();
+		console.log(countMoves)
+	}*/
 }
 
 
