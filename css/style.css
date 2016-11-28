@@ -3,31 +3,40 @@ html {
 	justify-content: center;
 	align-items: center; 
 }
-/* #container {
+
+#container {
+	position: relative;
+	width: 510px;
 	height:550px;
 	margin-top: 150px;
-} */
-/* #top {
+}
+
+#top {
 	position: absolute;
-	left:45px;
-	top:5px;
+	top: 10px;
+	right: 55px;
 	width: 400px;
 	height: 20px;
+	color: #f8b3c3;
+	font: bold 17px sans-serif;  
 	user-select:none;
-} */
+}
 
 #board {
+	position: absolute;
 	width: 500px;
 	height: 500px;
+	bottom: 5px;
 	background-color: #facad5;
-	border-radius: 30px;
-	margin-top: 50px;
 	border-right: 8px solid #f8b3c3;
 	border-bottom: 8px solid #f8b3c3;
+	border-radius: 30px;
+	margin-top: 50px;
 	perspective: 1000px;
 }
 
 .block {
+	position: relative;
 	width: 100px;
 	height: 100px;
 	line-height: 100px;
@@ -39,18 +48,15 @@ html {
 	text-align: center;
 	font-size: 50px;
 	cursor: pointer;
-
 	transition: 0.6s;
 	transform-style: preserve-3d;
-
-	position: relative;
 }
 
 .restart {
 	width: 20px;
 	height: 20px;
 	float: right;
-	background-image: url(http://findicons.com/files/icons/2711/free_icons_for_windows8_metro/128/restart.png);
+	background-image: url('../image/restart.png');
 	background-size: 20px 20px;
 	cursor: pointer;
 }
@@ -66,8 +72,4 @@ html {
 	transform: rotateY(180deg);
 	color: #CAFAEF;
 	background-color: #CAFAEF;
-}
-
-.avoid-clicks {
-  pointer-events: none;
 }
