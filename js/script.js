@@ -63,7 +63,7 @@ function toggleColor() {
 }
 
 var flipCount = 0,
- 	//countMoves = 0,
+ 	countMoves = 0,
  	memoryFlipped = 0;
 var memoryTiles = [];
 
@@ -76,13 +76,11 @@ board.onclick = function (event) {
 	if(target == board) {return;}
 
 	flipCount += 1;
-	//countMoves += 1;
 
 	if(flipCount == 1) {
 		first = target;
 		toggleColor();
 		memoryTiles[0]  = first.innerHTML;
-		console.log(flipCount);
 	}
 
 	else if(flipCount == 2) {
@@ -91,29 +89,29 @@ board.onclick = function (event) {
 		memoryTiles[1]  = target.innerHTML;
 
 		if(first.id == second.id) {
-
+			flipCount = 1;
 			clear();
 		}
 
 		else if(memoryTiles[0] == memoryTiles[1]) {
 			
 			matchedTiles();
+			countMoves += 1;
 		}
 
 		else {
 
 			clear();
+			countMoves += 1;
 		}
-		console.log(flipCount);
 
 	}
-	/*moves.innerHTML = countMoves;
+	moves.innerHTML = countMoves;
 	restartBtn.onclick = function() {
 		countMoves = 0;
 		moves.innerHTML = 0;
 		randomizeTiles();
-		console.log(countMoves)
-	}*/
+	}
 }
 
 
