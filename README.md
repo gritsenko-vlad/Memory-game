@@ -6,4 +6,4 @@ You should find all pairs of symbols to win.
 
 -'Restart' button clears the field and randomize circles' values.
 
-Demo:https://gritsenko-vlad.github.io/Memory-game/
+Demo: https://gritsenko-vlad.github.io/Memory-game/
